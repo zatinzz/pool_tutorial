@@ -16,7 +16,7 @@ pygame.display.set_caption("Pool")
 # Pymunk space
 space = pymunk.Space()
 static_body = space.static_body
-draw_options = pymunk.pygame_util.DrawOptions(screen)
+draw_options = pymunk.pygame_util.DrawOptions(screen) 
 
 # Clock
 clock = pygame.time.Clock()
