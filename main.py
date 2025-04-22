@@ -210,7 +210,35 @@ def main_menu():
             exit()
          # Thoát menu để vào game
 main_menu()
+def main_menu():
+  global screen  # Đảm bảo màn hình giữ nguyên kích thước
+  screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT + BOTTOM_PANEL))  
 
+  clock = pygame.time.Clock()
+  play_btn = Button(button_play, button_play_hover, 525, 350)
+  exit_btn = Button(button_exit, button_exit_hover, 525, 420)
+
+  while True:
+      screen.blit(menu_bg, (0, 0))
+      mouse_pos = pygame.mouse.get_pos()
+
+      for btn in (play_btn, exit_btn):
+         btn.draw(screen, btn.rect.collidepoint(mouse_pos))
+
+      pygame.draw.rect(screen, BG, (0, SCREEN_HEIGHT, SCREEN_WIDTH, BOTTOM_PANEL))
+      draw_text("POOL GAME", font, WHITE, SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT + 10)
+
+      pygame.display.update()
+      clock.tick(60)
+
+      for event in pygame.event.get():
+        if play_btn.is_clicked(event):
+            return 
+        if event.type == pygame.QUIT or exit_btn.is_clicked(event):
+            pygame.quit()
+            exit()
+         # Thoát menu để vào game
+main_menu()
 # Game loop
 run = True
 while run:
