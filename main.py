@@ -218,7 +218,7 @@ while run:
     space.step(1 / FPS)
     background_sound.stop()
     # Fill background
-    screen.fill(BG)
+    screen.fill(BG) 
 
     # Draw pool table
     screen.blit(table_image, (0, 0))
